@@ -74,11 +74,6 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
 
-    rekognition:
-      Type: AWS::Rekognition::Project
-      Properties:
-        ProjectName: ${self:provider.environment.PROJECT_NAME}
-
     blobsBucket:
       Type: AWS::S3::Bucket
       Properties:

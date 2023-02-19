@@ -14,8 +14,8 @@ def get_blobs(event, context):
     blob_id = event["pathParameters"]["blob_id"]
 
     result = dynamodb_client.get_item(
-        TableName=TABLE_NAME,
-        Key={"blob_id": {"S": blob_id}}).get("Item")
+        TableName=TABLE_NAME, Key={"blob_id": {"S": blob_id}}
+    ).get("Item")
 
     if not result:
         return error_404
@@ -28,4 +28,7 @@ def get_blobs(event, context):
     except AttributeError:
         return error_404
 
-    return {"statusCode": 200, "body": json.dumps({"blob_id": blob_id, "labels": response_labels})}
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"blob_id": blob_id, "labels": response_labels}),
+    }
