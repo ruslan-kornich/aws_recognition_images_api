@@ -11,7 +11,7 @@ error_404 = {"statusCode": 404, "body": json.dumps({"error": "Blob not found"})}
 
 def get_blobs(event, context):
     """Gets info about blob by blob_id"""
-    blob_id = event["path"].replace('/blobs/', "")
+    blob_id = event["pathParameters"]["blob_id"]
 
     result = dynamodb_client.get_item(
         TableName=TABLE_NAME,
