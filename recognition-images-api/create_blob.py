@@ -36,7 +36,7 @@ def create_blob(event, context):
     if not event_body:
         return response_bad_request
 
-    callback_url = json.loads(event_body)["callback_url"]
+    callback_url = json.loads(event_body).get("callback_url")
     if not is_url(callback_url):
         return response_bad_request
     else:
